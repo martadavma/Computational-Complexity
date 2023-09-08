@@ -15,21 +15,54 @@
 %\HWsubproblem
 \textit{Suppose} \( L_1, L_2 \in NP \). \textit{Please prove (or disprove) that }\( L_1 \cup L_2 \in NP \) \textit{and} \(L_1 \cap L_2 \in NP\).
 
-We will map a CNF formula $\phi$ into a 3CNF formula $\psi$ such that $\psi$ is satisfiable if and only if
-$\phi$ is. We demonstrate first the case that $\phi$ is a 4CNF. Let $C$ be a clause of $\phi$, say $C = u_1 \lor \neg u_2 \lor \neg u_3 \lor u_4$.
+Assume \( L_1, L_2 \in NP \).
 
-We add a new variable $z$ to the $\phi$ and replace $C$ with the pair of clauses $C_1 = u_1 \lor \neg u_2 \lor z$ and $C_2 = \neg u_3 \lor u_4 \lor \neg z$ 
+\textbf{First we will prove that \( L_1 \cup L_2 \in NP \).}
+
+Assume \( x \) is the input string we want to verify for \( L_1 \cup L_2\).
+
+The \( L_1 \cup L_2\) verifier would choose whether to verify \(L_1\) or \(L_2\) non-deterministically.
+
+For the chosen language (\(L_1\) or \(L_2\)), the verifier would use the non-deterministic choices to guess a certificate (a string that helps prove that \( x \) is in the language) and then verify it in polynomial time.
+
+If x is in either \(L_1\) or \(L_2\), there must exist a certificate that proves this, and the verifier can non-deterministically guess and verify it in polynomial time.
+
+Since \(L_1\) and \(L_2\) are both in NP, there exist non-deterministic polynomial-time verifiers for both. Therefore, you can combine these verifiers to create a non-deterministic polynomial-time verifier for \( L_1 \cup L_2\), therefore \( L_1 \cup L_2\) must be in NP.
+
+\textbf{Now we will proceed to prove that \(L_1 \cap L_2 \in NP\).}
+
+Assume \( y \) is the input string we want to verify for \( L_1 \cap L_2\).
+
+The \( L_1 \cap L_2\) verifier would choose whether to verify \(L_1\) or \(L_2\) non-deterministically
+
+For the chosen language (either \(L_1\) or \(L_2\)), the verifier would use the non-deterministic choices to guess a certificate (a string that helps prove that y is in the language) and then verify it in polynomial time.
+
+If y is in both \(L_1\) and \(L_2\), there must exist certificates that prove this for both languages, and the verifier can non-deterministically guess and verify both certificates in polynomial time.
+
+Since \(L_1\) and \(L_2\) are both in NP, there exist non-deterministic polynomial-time verifiers for both. 
+
+Therefore, we can combine these verifiers to create a non-deterministic polynomial-time verifier for \( L_1 \cap L_2\), proving that \( L_1 \cap L_2\) is in NP.
 
 
-Clearly, if u1 ∨ u2 ∨ u3 ∨ u4 is true then there is an assignment to z that satisfies both u1 ∨ u2 ∨ z and u3 ∨ u4 ∨ z and vice versa: if C is false then no matter what value we assign to z either C1 or C2 will be false. The same idea can be applied to a general clause of size 4, and in fact can be used to change every clause C of size k (for k > 3) into an equivalent pair of clauses C1 of size k − 1 and C2 of size 3 that depend on the k variables of C and an additional auxiliary variable z. Applying this transformation repeatedly yields a polynomial-time transformation of a CNF formula $\phi$ into an equivalent 3CNF formula $\psi$.
+
+\HWproblem
+\textit{Assume that SAT := \{$\phi$  : $\phi$ is a satisfiable CNF\} is NP-complete. Prove that 3SAT := \{$\phi$ : $\phi$  is a satisfiable 3-CNF\} is NP-complete.}
+
+To prove that if SAT is NP-complete then 3SAT is NP-complete, we will reduce SAT to 3SAT.
+
+%REDUCTION SAT to 3SAT 
+
+%We will map a CNF formula $\phi$ into a 3CNF formula $\psi$ such that $\psi$ is satisfiable if and only if $\phi$ is. We demonstrate first the case that $\phi$ is a 4CNF. Let $C$ be a clause of $\phi$, say $C = u_1 \lor \neg u_2 \lor \neg u_3 \lor u_4$.
+
+%We add a new variable $z$ to the $\phi$ and replace $C$ with the pair of clauses $C_1 = u_1 \lor \neg u_2 \lor z$ and $C_2 = \neg u_3 \lor u_4 \lor \neg z$ 
+
+%Clearly, if u1 ∨ u2 ∨ u3 ∨ u4 is true then there is an assignment to z that satisfies both u1 ∨ u2 ∨ z and u3 ∨ u4 ∨ z and vice versa: if C is false then no matter what value we assign to z either C1 or C2 will be false. The same idea can be applied to a general clause of size 4, and in fact can be used to change every clause C of size k (for k > 3) into an equivalent pair of clauses C1 of size k − 1 and C2 of size 3 that depend on the k variables of C and an additional auxiliary variable z. Applying this transformation repeatedly yields a polynomial-time transformation of a CNF formula $\phi$ into an equivalent 3CNF formula $\psi$.
+
 
 
 
 
 \HWproblem
-This is the solution to the the second problem.
-
-\HWproblem
-This is the solution to the the third problem.
+Prove that \( SPACE(n^3) \not\subseteq SPACE(n^2) \)
 
 \end{document}
