@@ -1,0 +1,35 @@
+\documentclass{cis320}
+
+\HWauthor{Marta Davila Mateu}{davilama@usc.edu}
+\HWauthor{Yifei Huang}{yifeih@usc.edu}
+\HWno{1}
+\HWcourse{CSCI 599}
+%\HWextension
+
+\begin{document}
+\maketitle
+
+
+
+\HWproblem
+%\HWsubproblem
+\textit{Suppose} \( L_1, L_2 \in NP \). \textit{Please prove (or disprove) that }\( L_1 \cup L_2 \in NP \) \textit{and} \(L_1 \cap L_2 \in NP\).
+
+We will map a CNF formula $\phi$ into a 3CNF formula $\psi$ such that $\psi$ is satisfiable if and only if
+$\phi$ is. We demonstrate first the case that $\phi$ is a 4CNF. Let $C$ be a clause of $\phi$, say $C = u_1 \lor \neg u_2 \lor \neg u_3 \lor u_4$.
+
+We add a new variable $z$ to the $\phi$ and replace $C$ with the pair of clauses $C_1 = u_1 \lor \neg u_2 \lor z$ and $C_2 = \neg u_3 \lor u_4 \lor \neg z$ 
+
+
+Clearly, if u1 ∨ u2 ∨ u3 ∨ u4 is true then there is an assignment to z that satisfies both u1 ∨ u2 ∨ z and u3 ∨ u4 ∨ z and vice versa: if C is false then no matter what value we assign to z either C1 or C2 will be false. The same idea can be applied to a general clause of size 4, and in fact can be used to change every clause C of size k (for k > 3) into an equivalent pair of clauses C1 of size k − 1 and C2 of size 3 that depend on the k variables of C and an additional auxiliary variable z. Applying this transformation repeatedly yields a polynomial-time transformation of a CNF formula $\phi$ into an equivalent 3CNF formula $\psi$.
+
+
+
+
+\HWproblem
+This is the solution to the the second problem.
+
+\HWproblem
+This is the solution to the the third problem.
+
+\end{document}
